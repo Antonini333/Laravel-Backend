@@ -14,7 +14,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return "Hola";
+        $appointment=Appointment::all();
+        return $appointment;
     }
 
     /**
