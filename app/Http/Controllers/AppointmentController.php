@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
@@ -26,7 +27,30 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->all();
+
+        $rules=[
+            'date' => 'required|min:10',
+            'hour' => 'required',
+            'symptoms' => 'required'
+        ];
+
+        $messages=[
+            'date.required' => 'No has introducido una fecha',
+            'date.min' => 'El formato de fecha debe ser YYYY-MM-DD',
+            'hour.required' => 'Escoge una hora para la cita',
+            'symptoms.required' => 'No has introducido el numero de telefono'
+        ];
+
+        $validator = Validator::make($input,$rules,$messages);
+
+        if ($validator->fails()) {
+            return response()->json([$validator->errors()],400);
+        }else{
+            $appointment=Appointment::create($input);
+
+            return $appointment;
+        }
     }
 
     /**
