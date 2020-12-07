@@ -20,10 +20,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role')->default('user');
             $table->string('age');
-            $table->string('DNI');
+            $table->string('DNI')->nullable();
             $table->string('nationality');
             $table->string('address');
             $table->string('phone');
+            $table->string('token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
