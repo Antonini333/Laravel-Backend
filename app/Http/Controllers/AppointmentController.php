@@ -39,7 +39,7 @@ class AppointmentController extends Controller
             'date.required' => 'No has introducido una fecha',
             'date.min' => 'El formato de fecha debe ser YYYY-MM-DD',
             'hour.required' => 'Escoge una hora para la cita',
-            'symptoms.required' => 'No has introducido el numero de telefono'
+            'symptoms.required' => 'No has introducido ningún síntoma'
         ];
 
         $validator = Validator::make($input,$rules,$messages);
