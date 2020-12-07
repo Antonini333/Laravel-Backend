@@ -20,8 +20,8 @@ class CreateAppointmentsTable extends Migration
             $table->string('status',64);
             $table->string('hour',64);
             $table->string('symptoms',64);
-            $table->string('name_user',64);
-            $table->string('email_user',64);
+            $table->string('name_user',64)->nullable(true);
+            $table->string('email_user',64)->nullable(true);
             
         });
     }
