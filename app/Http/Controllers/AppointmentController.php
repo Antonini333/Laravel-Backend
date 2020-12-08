@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class AppointmentController extends Controller
 {
@@ -13,10 +15,20 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexAdmin()
     {
-        $appointment=Appointment::all();
-        return $appointment;
+        return Appointment::all();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($user)
+    {
+        $appointments = Appointment::where('user_id', '=', $user)->get();
+        return $appointments;
     }
 
     /**
@@ -27,6 +39,7 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
+        try{
         $input=$request->all();
 
         $rules=[
@@ -46,11 +59,16 @@ class AppointmentController extends Controller
 
         if ($validator->fails()) {
             return response()->json([$validator->errors()],400);
-        }else{
-            $appointment=Appointment::create($input);
-
-            return $appointment;
         }
+
+        $user = Auth::user();
+        $appointment = new Appointment($input);
+        $appointment->user_id = $user->id;
+        $appointment->save();
+        return response()->json($appointment, 201);
+        } catch (\Exception $e) {
+            return response()->json($e, 400);
+       }
     }
 
     /**
