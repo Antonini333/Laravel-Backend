@@ -15,7 +15,7 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexAdmin()
+    public function index()
     {
         return Appointment::all();
     }
@@ -25,7 +25,7 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user)
+    public function indexUser($user)
     {
         $appointments = Appointment::where('user_id', '=', $user)->get();
         return $appointments;
@@ -99,11 +99,19 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Appointment  $appointment
+     *  @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(int $id)
     {
-        //
-    }
+        try {
+            $deleted = Appointment::whereId($id)->delete();
+            if ($deleted)
+                return response()->json(['message' => 'Appointment deleted succesfully.'], 200);
+            else
+                return response()->json(['message' => 'Nothing to delete.'], 200);
+        } catch (\Exception $e) {
+            return response()->json($e, 400);
+        }
+    }        
 }
