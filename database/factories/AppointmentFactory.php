@@ -26,8 +26,6 @@ class AppointmentFactory extends Factory
             'status' => $this->faker->stateAbbr,
             'hour' => $this->faker->time($format = 'H:i:s', $max = 'now'),
             'symptoms' => $this->faker->stateAbbr,
-            'name_user' => $this->faker->stateAbbr,
-            'email_user' => $this->faker->stateAbbr,
         ];
     }
 }
