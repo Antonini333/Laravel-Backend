@@ -17,7 +17,7 @@ class CreateAppointmentsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('date',64);
-            $table->string('status',64);
+            $table->string('status',64)->default('pending');
             $table->string('hour',64);
             $table->string('symptoms',64);
 

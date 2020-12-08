@@ -76,6 +76,7 @@ class UserController extends Controller
             $respuesta['age']= $user->age;
             $respuesta['nationality']= $user->nationality;
             $respuesta['role']= $user->role;
+            $respuesta['id']= $user->id;
             $respuesta['token']= 'Bearer '.$token;
              return response()->json($respuesta,200);
         }else{
