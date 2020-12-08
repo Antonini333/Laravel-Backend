@@ -30,5 +30,5 @@ Route::post('login', [UserController::class,'login'])->name('login'); // FUNCION
 Route::get('logout', [UserController::class,'logout'])->name('logout')->middleware('auth:api'); // FUNCIONA -> Destruye el token del usuario
 
 //APPOINTMENTS
-Route::post('appointment/create', [AppointmentController::class,'store'])->middleware('auth:api'); 
+Route::post('appointment/create', [AppointmentController::class,'store'])/* ->middleware('auth:api') */; 
 

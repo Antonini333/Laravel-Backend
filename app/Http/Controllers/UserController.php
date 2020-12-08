@@ -30,10 +30,37 @@ class UserController extends Controller
     {
         $input=$request->all();
         $input['password']=bcrypt($input['password']);
-        $user = User::create($input);
+        
+        $rules=[
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'age'=>'required',
+            'DNI'=>'required',
+            'address'=>'required',
+            'phone'=>'required',
+                    ];
 
-        return $user;
+        $messages=[
+            'name.required'=>'The name field is empty.',
+            'email.required'=>'The email field is empty.',
+            'password.required'=>'The password field is empty.',
+            'age.required'=>'The age field is empty.',
+            'DNI.required'=>'The DNI field is empty.',
+            'address.required'=>'The address field is empty.',
+            'phone.required'=>'The phone field is empty.'
+
+        ];
+
+        $validator = Validator::make($input,$rules,$messages);
+
+        if ($validator->fails()) {
+            return response()->json([$validator->errors()],400);
+        }else{
+            $user=User::create($input);
+            return $user;
     }
+}
 
     public function login(Request $request)
     {
@@ -52,7 +79,7 @@ class UserController extends Controller
             $respuesta['token']= 'Bearer '.$token;
              return response()->json($respuesta,200);
         }else{
-            return response()->json(['error' => 'No autenticado'],203);
+            return response()->json(['error' => 'No autenticado'],401);
         }
     }
 
