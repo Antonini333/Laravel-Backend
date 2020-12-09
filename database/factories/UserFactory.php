@@ -33,6 +33,7 @@ class UserFactory extends Factory
             'nationality' => $this->faker->country,
             'address' => $this->faker->streetAddress,
             'phone' => $this->faker->phoneNumber,
+            
         ];
     }
 }

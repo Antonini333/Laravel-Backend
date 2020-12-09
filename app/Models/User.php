@@ -26,7 +26,8 @@ class User extends Authenticatable
         'DNI',
         'nationality',
         'address',
-        'phone'
+        'phone',
+        'is_admin'
         ];
 
     /**

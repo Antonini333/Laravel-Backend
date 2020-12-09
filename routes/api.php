@@ -21,11 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //ADMIN
-Route::group(['middleware' => ['role:admin']], function () {
-Route::get('Appointment', [AppointmentController::class,'indexAll']); // HEROKU CHECKED -> Muestra todos las citas de todos los usuarios (GET /api/Appointment)
-Route::apiResource('users', UserController::class);  // HEROKU CHECKED -> Muestra todos los usuarios registrados (GET /api/users)
-});
+Route::group(['middleware' => ['role:1']], function () {
 
+Route::get('Appointment', [AppointmentController::class,'indexAll']); // HEROKU CHECKED -> Muestra todos las citas de todos los usuarios (GET /api/Appointment)
+Route::get('users', [UserController::class,'index']);  // HEROKU CHECKED -> Muestra todos los usuarios registrados (GET /api/users)
+
+});
 
 //LOGIN-REGISTER-LOGOUT
 Route::post('register', [UserController::class,'store']); // HEROKU CHECKED -> Registra usuario en la base de datos (POST /api/register)
@@ -37,3 +38,11 @@ Route::get('logout', [UserController::class,'logout'])->name('logout')->middlewa
 Route::post('Appointment', [AppointmentController::class,'store'])->middleware('auth:api'); // HEROKU CHECKED -> Crea cita enlazada al usuario del token a través de la columna "user_id" (POST /api/Appointment)
 Route::delete('Appointment/{id}', [AppointmentController::class,'destroy'])->middleware('auth:api'); // HEROKU CHECKED -> Elimina cita de la DB usando su id (DELETE api/Appointment/{id})
 Route::get('Appointment/show', [AppointmentController::class,'index'])->middleware('auth:api'); // HEROKU CHECKED -> Muestra las citas enlazadas al usuario logueado (GET /api/Appointment/show)
+
+
+Route::group(['middleware' => ['role:1']], function () {
+
+    Route::get('Appointment', [AppointmentController::class,'indexAll']); // HEROKU CHECKED -> Muestra todos las citas de todos los usuarios (GET /api/Appointment)
+Route::get('users', [UserController::class,'index']);  // HEROKU CHECKED -> Muestra todos los usuarios registrados (GET /api/users)
+
+});
