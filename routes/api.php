@@ -21,8 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //ADMIN
-Route::get('Appointment', [AppointmentController::class,'indexAll'])->middleware('role:admin'); // HEROKU CHECKED -> Muestra todos las citas de todos los usuarios (GET /api/Appointment)
+Route::group(['middleware' => ['role:admin']], function () {
+Route::get('Appointment', [AppointmentController::class,'indexAll']); // HEROKU CHECKED -> Muestra todos las citas de todos los usuarios (GET /api/Appointment)
 Route::apiResource('users', UserController::class);  // HEROKU CHECKED -> Muestra todos los usuarios registrados (GET /api/users)
+});
 
 
 //LOGIN-REGISTER-LOGOUT
