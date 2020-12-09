@@ -70,6 +70,7 @@ class UserController extends Controller
 
             $respuesta=[];
             $respuesta['name']= $user->name;
+            $respuesta['email']= $user->email;
             $respuesta['phone']= $user->phone;
             $respuesta['address']= $user->address;
             $respuesta['DNI']= $user->DNI;

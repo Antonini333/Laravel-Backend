@@ -10,26 +10,27 @@ use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    
+    public function indexAll()
     {
         return Appointment::all();
     }
 
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function indexUser($user)
+    public function index()
     {
-        $appointments = Appointment::where('user_id', '=', $user)->get();
-        return $appointments;
+     try {
+        $user = Auth::user();
+        $appointments = Appointment::where('user_id', '=', $user->id)->get();
+        return response()->json($appointments, 208);
+    } catch (\Exception $e) {
+        return response()->json($e, 400);
     }
+}
 
     /**
      * Store a newly created resource in storage.
