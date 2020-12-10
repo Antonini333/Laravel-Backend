@@ -10,8 +10,8 @@ class Role
 {
 
 public function handle(Request $request, Closure $next)
-{
-     if (Auth::user()->role === 'admin' ) { // if the current role is Administrator
+{     $user = Auth::user();
+     if ($user->role === 'admin' ) { // if the current role is Administrator
      	return $next($request);
      }
     
