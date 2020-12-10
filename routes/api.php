@@ -40,9 +40,3 @@ Route::delete('Appointment/{id}', [AppointmentController::class,'destroy'])->mid
 Route::get('Appointment/show', [AppointmentController::class,'index'])->middleware('auth:api'); // HEROKU CHECKED -> Muestra las citas enlazadas al usuario logueado (GET /api/Appointment/show)
 
 
-Route::group(['middleware' => ['role:1']], function () {
-
-    Route::get('Appointment', [AppointmentController::class,'indexAll']); // HEROKU CHECKED -> Muestra todos las citas de todos los usuarios (GET /api/Appointment)
-Route::get('users', [UserController::class,'index']);  // HEROKU CHECKED -> Muestra todos los usuarios registrados (GET /api/users)
-
-});
