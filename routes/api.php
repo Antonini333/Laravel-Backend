@@ -26,13 +26,10 @@ Route::group(['middleware' => ['role']], function () {                          
 Route::get('Appointment', [AppointmentController::class,'indexAll']); // HEROKU CHECKED -> Muestra todos las citas de todos los usuarios (GET /api/Appointment)
 Route::get('users', [UserController::class,'index']);  // HEROKU CHECKED -> Muestra todos los usuarios registrados (GET /api/users)
 
-
-
 //LOGIN-REGISTER-LOGOUT
 Route::post('register', [UserController::class,'store']); // HEROKU CHECKED -> Registra usuario en la base de datos (POST /api/register)
 Route::post('login', [UserController::class,'login'])->name('login'); // HEROKU CHECKED -> Brinda nuevo token al usuario (POST /api/login)
 Route::get('logout', [UserController::class,'logout'])->name('logout')->middleware('auth:api'); // HEROKU CHECKED -> Destruye el token del usuario (GET /api/logout)
-
 
 //APPOINTMENTS
 Route::post('Appointment', [AppointmentController::class,'store'])->middleware('auth:api'); // HEROKU CHECKED -> Crea cita enlazada al usuario del token a través de la columna "user_id" (POST /api/Appointment)
