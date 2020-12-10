@@ -1,226 +1,97 @@
-1
- # DentalClinicAppointments 
-2
-​
-3
-## What is DentalClinicAppointments ❓
-4
-​
-5
-### DentalClinicAppointments is, for now, the backend part of an application made for users of a dental clinic, where they can manage his appointments.  📑
-6
-​
-7
-### Edit: Now you can download the front-end part at https://github.com/Antonini333/frontend-dental-app
-8
-​
-9
-​
-10
-## 🔧🔧 Technologies:
-11
-​
-12
-- Javascript.
-13
-- NodeJS.
-14
-- Express.
-15
-- MongoDB.
-16
-- Mongoose.
-17
-- Mongo Atlas.
-18
-- Postman.
-19
-- Git.
-20
-- GitHub.
-21
-- Heroku.
-22
-​
-23
-## 👀 Dependencies:
-24
-- JWT.
-25
-- Bycrpt.
-26
-- RegEx.
-27
-​
-28
-​
-29
-​
-30
-# Getting Started
-31
-​
-32
-​
-33
-## Choose:
-34
-​
-35
-You can test the endpoints with the deployed app URL **(https://guarded-scrubland-93096.herokuapp.com)** or download the code, open it on vsCode and run in terminal:
-36
- 
-37
-   $ npm init -y 
-38
-   
-39
-   $ npm i express mongoose bcrypt jsonwebtoken 
-40
-   
-41
-​
-42
-## Important ❗
-43
-​
-44
-You will need to use Postman to make server petitions since we haven't a frontend yet.
-￼
-Commit changes
-Commit summary￼Optional extended description
-￼
-￼ Commit directly to the main branch.
-￼ Create a new branch for this commit and start a pull request. Learn more about pull requests.
-￼Commit changes Cancel
-© 2020 GitHub, Inc.
-Terms
-Privacy
-￼Cookie Preferences
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-# DentalClinicAppointments 
 
-## What is DentalClinicAppointments ❓
+# Laravel-DentalClinicAppointments
 
-### DentalClinicAppointments is, for now, the backend part of an application made for users of a dental clinic, where they can manage his appointments.  📑
+## What is Laravel-DentalClinicAppointments ❓
 
-### Edit: Now you can download the front-end part at https://github.com/Antonini333/frontend-dental-app
+### Laravel-DentalClinicAppointments is an API RESTful created with Laravel, designed to nourish the frontend part of the application.
+
+### You can download the front-end part at https://github.com/Antonini333/frontend-dental-app
 
 
 ## 🔧🔧 Technologies:
 
-- Javascript.
-- NodeJS.
-- Express.
-- MongoDB.
-- Mongoose.
-- Mongo Atlas.
-- Postman.
+- PHP.
+- Laravel.
+- Artisan.
+- Eloquent ORM.
+- 0Auth - Laravel/Passport.
+- PHPMyAdmin.
+- MySQL.
+- PostgreSQL.
+-Postman
 - Git.
 - GitHub.
 - Heroku.
-
-## 👀 Dependencies:
-- JWT.
-- Bycrpt.
-- RegEx.
-
-
 
 # Getting Started
 
 
 ## Choose:
 
-You can test the endpoints with the deployed app URL **(https://guarded-scrubland-93096.herokuapp.com)** or download the code, open it on vsCode and run in terminal:
- 
-   $ npm init -y 
+You can test the endpoints with the deployed app URL **(https://fast-stream-27176.herokuapp.com/)** or download the code, open it on vsCode and run it.
    
-   $ npm i express mongoose bcrypt jsonwebtoken 
-   
+## Tables:
 
-## Important ❗
+This project it's have been made out with only two tables in origin: User and Appointments. The tables are linked with a foreignId which assures that each appointment belongs to a certain user.
 
-You will need to use Postman to make server petitions since we haven't a frontend yet.
-Below there is a list of the endpoints you can reach:
+So the relationships would be: User -> Has many -> Appointments //  Appointments -> Belongs to many -> Users
+
+## Routes ❗
+There are several routes created in this API. Below there's an index of the most important, feel free to test!
 
 
 # Users: 
 
--  https://guarded-scrubland-93096.herokuapp.com/users/register 🔛 **A new user is registered**  (POST method)
+-  https://fast-stream-27176.herokuapp.com/api/register 🔛 **A new user is registered**  (POST method)
 
    Required parameters by body to register: "name", "email" and "password"
 
--  https://guarded-scrubland-93096.herokuapp.com/users/login 🔛 **User logs into his account**  (POST method)
+-  https://fast-stream-27176.herokuapp.com//api/login 🔛 **User logs into his account**  (POST method)
 
    Required parameters by body to login: "name", "email"
    
--  https://guarded-scrubland-93096.herokuapp.com/users/logout 🔛 **User exits his acccount**  (POST method)
+-  https://fast-stream-27176.herokuapp.com//api/logout 🔛 **User exits his acccount**  (POST method)
 
    Required parameters by body to logout: "name", "email"
 
--  https://guarded-scrubland-93096.herokuapp.com/users 🔛 **Show all users** (GET method)
+-  https://fast-stream-27176.herokuapp.com/api/users 🔛 **Show all users** ADMIN (GET method)
 
--  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 **Search a user by his id** (GET method)
+-  https://fast-stream-27176.herokuapp.com/api/users/:id 🔛 **Delete a client by his id** (DELETE method)
 
--  https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 **Search a user by his email** (GET method)
-
--  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 **Modify info of a user** (PUT method)
-
--  https://guarded-scrubland-93096.herokuapp.com/users/:id 🔛 **Delete a client by his id** (DELETE method)
-
-- https://guarded-scrubland-93096.herokuapp.com/users/email/:email 🔛 **Delete a client by his id** (DELETE method) 
+- https://guarded-scrubland-93096.herokuapp.com/api/logout🔛 **Revoke the user's token** (GET method) 
 
 
 # Appointments: 
 
-- https://guarded-scrubland-93096.herokuapp.com/appointments/show/INSERT-EMAIL-HERE 🔛 **Show appointments of user by date** (GET method)
+- https://fast-stream-27176.herokuapp.com/api/Appointment 🔛 **User can make a new appointment** (POST method) 
 
-  Required parameters by body: "date" // If you don't facilitate a date, all appointments of user will be shown.
+  Required parameters by body: "date", "symptoms", "hour".
 
-- https://guarded-scrubland-93096.herokuapp.com/appointments/create/INSERT-EMAIL-HERE 🔛 **User can make a new appointment** (POST method) 
+- https://fast-stream-27176.herokuapp.com/api/appointment/INSERT-ID-HERE 🔛 **User can cancel an appointment previously made** (DELETE method)
 
-  Required parameters by body: "date", "symptoms"
+- https://fast-stream-27176.herokuapp.com/api/Appointment/show 🔛 **User can see his already created appointments** (GET method) 
 
-- https://guarded-scrubland-93096.herokuapp.com/appointments/cancel/INSERT-EMAIL-HERE 🔛 **User can cancel an appointment previously made** (DELETE method)
-
-  Required parameters by body: "date" // If you don't facilitate a date, all appointments of user will be erased.
-
-
+- https://fast-stream-27176.herokuapp.com/api/Appointment 🔛 **Show all appointments of all users** ADMIN (GET method)
 
 # Screenshots:
 
 ## SIGN UP
  
- ![Screenshot](screenshotZ/register-user.png) 
+ ![Screenshot](screenshotZ/register.png) 
  
- ## LOG IN
+## LOG IN
  
   ![Screenshot](screenshotZ/login.png) 
-
-## LOG OUT
-
-![Screenshot](screenshotZ/logout.png)
   
-  ## SHOW ALL USERS
-  
- ![Screenshot](screenshotZ/allusers.png) 
  
- ## CREATE APPOINTMENT
+## CREATE APPOINTMENT
  
-![Screenshot](screenshotZ/createapp.png)
+![Screenshot](screenshotZ/createappointment.png)
+
 
 ## CHECK APPOINTMENTS
 
-![Screenshot](screenshotZ/consultapp.png)
+![Screenshot](screenshotZ/allappointments.png)
 
 # DELETE APPOINTMENT 
-![Screenshot](screenshotZ/deleteapp.png)
+![Screenshot](screenshotZ/deleteappointment.png)
