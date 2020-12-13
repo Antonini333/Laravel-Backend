@@ -5,7 +5,7 @@
 
 ### Laravel-DentalClinicAppointments is an API RESTful created with Laravel, designed to nourish the frontend part of the application.
 
-### You can check out this API already integred with a frontend at https://cranky-babbage-97b2e2.netlify.app/register
+### You can check out this API already integred with a frontend at https://dazzling-payne-538b77.netlify.app
 
 
 ## 🔧🔧 Technologies:
