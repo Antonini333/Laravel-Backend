@@ -21,12 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //ADMIN
-Route::group(['middleware' => ['role']], function () {                                                                                                                                                                
 
 Route::get('Appointment', [AppointmentController::class,'indexAll']); // HEROKU CHECKED -> Muestra todos las citas de todos los usuarios (GET /api/Appointment)
 Route::get('users', [UserController::class,'index']);  // HEROKU CHECKED -> Muestra todos los usuarios registrados (GET /api/users)
 
-});
+
 //LOGIN-REGISTER-LOGOUT
 Route::post('register', [UserController::class,'store']); // HEROKU CHECKED -> Registra usuario en la base de datos (POST /api/register)
 Route::post('login', [UserController::class,'login'])->name('login'); // HEROKU CHECKED -> Brinda nuevo token al usuario (POST /api/login)
